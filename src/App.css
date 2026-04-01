@@ -1,0 +1,22 @@
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-main {
+  margin-left: 260px;
+  flex: 1;
+  min-height: 100vh;
+  background: #fff;
+}
+
+.app-content {
+  padding-top: 56px;
+  min-height: calc(100vh - 56px);
+}
+
+@media (max-width: 768px) {
+  .app-main {
+    margin-left: 0;
+  }
+}
