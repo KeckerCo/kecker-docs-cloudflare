@@ -22,7 +22,7 @@ function preprocessMarkdown(md) {
 function renderSidebar(activeSlug) {
   const groups = siteConfig.navigation.map(group => {
     const links = group.pages.map(page => {
-      const href = page.slug === 'home' ? '/index.html' : `/${page.slug}.html`
+      const href = page.slug === 'home' ? '/' : `/${page.slug}`
       const isActive = page.slug === activeSlug
       return `<li><a href="${href}" class="sidebar-link${isActive ? ' sidebar-link--active' : ''}">${page.title}</a></li>`
     }).join('\n')
@@ -36,7 +36,7 @@ function renderSidebar(activeSlug) {
   return `
     <aside class="sidebar">
       <div class="sidebar-logo">
-        <a href="/index.html" class="sidebar-logo-link">${siteConfig.name}</a>
+        <a href="/" class="sidebar-logo-link">${siteConfig.name}</a>
       </div>
       <nav class="sidebar-nav">${groups}</nav>
       <div class="sidebar-footer">
@@ -63,7 +63,7 @@ function renderTopBar() {
           <line x1="3" y1="18" x2="21" y2="18"/>
         </svg>
       </button>
-      <a href="/index.html" class="topbar-logo-mobile">${siteConfig.name}</a>
+      <a href="/" class="topbar-logo-mobile">${siteConfig.name}</a>
       <div class="topbar-actions">${links}</div>
     </header>`
 }
