@@ -1,10 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import './DocPage.css'
 
-// Custom renderer for callout blocks (:::info ... :::)
+// Static imports — Vite bundles these reliably in production
+import homeRaw from '../content/home.md?raw'
+import privacyRaw from '../content/privacy.md?raw'
+
+const contentMap = {
+  home: homeRaw,
+  privacy: privacyRaw,
+}
+
 function preprocessMarkdown(content) {
   return content.replace(
     /:::info\n([\s\S]*?):::/g,
@@ -19,26 +27,10 @@ function preprocessMarkdown(content) {
 }
 
 export default function DocPage({ slug }) {
-  const [content, setContent] = useState('')
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const raw = contentMap[slug]
+  if (!raw) return <div className="doc-error">Page not found.</div>
 
-  useEffect(() => {
-    setLoading(true)
-    setError(null)
-    import(`../content/${slug}.md?raw`)
-      .then((mod) => {
-        setContent(preprocessMarkdown(mod.default))
-        setLoading(false)
-      })
-      .catch(() => {
-        setError('Page not found.')
-        setLoading(false)
-      })
-  }, [slug])
-
-  if (loading) return <div className="doc-loading">Loading…</div>
-  if (error) return <div className="doc-error">{error}</div>
+  const content = preprocessMarkdown(raw)
 
   return (
     <article className="doc-content">
@@ -50,16 +42,23 @@ export default function DocPage({ slug }) {
           h2: ({ children }) => <h2 className="doc-h2">{children}</h2>,
           h3: ({ children }) => <h3 className="doc-h3">{children}</h3>,
           a: ({ href, children }) => (
-            <a href={href} className="doc-link" target={href?.startsWith('http') ? '_blank' : undefined} rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}>
+            <a
+              href={href}
+              className="doc-link"
+              target={href?.startsWith('http') ? '_blank' : undefined}
+              rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+            >
               {children}
             </a>
           ),
-          code: ({ inline, children, ...props }) =>
-            inline ? (
-              <code className="doc-code-inline" {...props}>{children}</code>
-            ) : (
-              <pre className="doc-pre"><code className="doc-code-block" {...props}>{children}</code></pre>
-            ),
+          // react-markdown v10: pre wraps code blocks, code handles inline
+          pre: ({ children }) => <pre className="doc-pre">{children}</pre>,
+          code: ({ children, className }) => {
+            const isBlock = className?.startsWith('language-')
+            return isBlock
+              ? <code className={`doc-code-block ${className ?? ''}`}>{children}</code>
+              : <code className="doc-code-inline">{children}</code>
+          },
           blockquote: ({ children }) => (
             <blockquote className="doc-blockquote">{children}</blockquote>
           ),
