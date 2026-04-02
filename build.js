@@ -279,8 +279,6 @@ if (existsSync(join(__dirname, 'public', 'favicon.svg'))) {
   copyFileSync(join(__dirname, 'public', 'favicon.svg'), join(__dirname, 'dist', 'favicon.svg'))
 }
 
-// Write _redirects for SPA-like navigation (just in case)
-writeFileSync(join(__dirname, 'dist', '_redirects'), '/* /index.html 200\n')
 
 let pagesBuilt = 0
 for (const group of siteConfig.navigation) {
