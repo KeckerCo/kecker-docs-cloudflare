@@ -1,13 +1,16 @@
 {
   "name": "kecker-docs-cloudflare",
-  "version": "1.0.0",
-  "description": "Kecker docs - Cloudflare Pages static site",
   "type": "module",
+  "version": "1.0.0",
+  "engines": { "node": ">=22.0.0" },
   "scripts": {
-    "build": "node build.js",
-    "dev": "node build.js --dev && npx serve dist -l 5174"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "marked": "^17.0.5"
+    "astro": "^5.7.0",
+    "wrangler": "^4.84.0"
   }
 }

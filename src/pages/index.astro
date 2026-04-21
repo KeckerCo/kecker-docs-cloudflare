@@ -1,0 +1,137 @@
+---
+import SiteShell from '../layouts/SiteShell.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<SiteShell title={SITE_TITLE} description={SITE_DESCRIPTION}>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">Software &amp; AI Engineering</span>
+      <h1>Software as Language.<br />Built for Human Flourishing.</h1>
+      <p class="lede">
+        Kecker is a software and AI company that applies classical reasoning to modern engineering.
+        Platonic ideals, Aristotelian logos, Stoic virtue — not as ornament, but as method.
+        We build systems that are clear, purposeful, and genuinely good.
+      </p>
+      <div class="hero-actions">
+        <a href="mailto:frontdoor@kecker.co" class="button button-primary">Get in Touch</a>
+        <a href="/privacy" class="text-link">Our Privacy Policy →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy Pillars -->
+  <section class="pillars">
+    <div class="pillars-inner">
+      <div class="pillars-header">
+        <span class="eyebrow">Our Philosophy</span>
+        <h2>Three traditions. One discipline.</h2>
+      </div>
+      <div class="pillars-grid">
+        <article class="pillar-card">
+          <span class="eyebrow">Platonic Form</span>
+          <h3>The Ideal is the Standard</h3>
+          <p>
+            We pursue the ideal. Every interface, API, and system aims toward the Form of what
+            software ought to be: clear, true, and good. The gap between the current and the ideal
+            is not a defect to paper over — it is the space in which real craft operates.
+          </p>
+        </article>
+        <article class="pillar-card">
+          <span class="eyebrow">Aristotelian Logos</span>
+          <h3>Reason as Method</h3>
+          <p>
+            Reason is our method. We engineer with purpose — understanding the <em>telos</em> of
+            every system before writing a line of code. Software without telos is machinery.
+            Software with it becomes an instrument of human ends.
+          </p>
+        </article>
+        <article class="pillar-card">
+          <span class="eyebrow">Stoic Virtue</span>
+          <h3>Excellence as Foundation</h3>
+          <p>
+            Excellence is the only standard. Like the Stoics, we believe virtue — in code as in
+            life — is its own reward and the foundation of lasting work. Shortcuts compound into
+            entropy. Rigorous craft compounds into endurance.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Build -->
+  <section class="services">
+    <div class="services-inner">
+      <div class="services-header">
+        <span class="eyebrow">What We Build</span>
+        <h2>Engineering at the intersection of reason and craft.</h2>
+      </div>
+      <div class="services-grid">
+        <article class="service-card">
+          <span class="eyebrow">Mobile &amp; Web</span>
+          <h3>Mobile &amp; Web Engineering</h3>
+          <p>
+            High-performance applications built with the rigor of logos and the craft of virtue.
+            We build for the long run — architectures that remain coherent under growth, interfaces
+            that stay honest under pressure. We build what endures.
+          </p>
+        </article>
+        <article class="service-card">
+          <span class="eyebrow">Artificial Intelligence</span>
+          <h3>AI Systems</h3>
+          <p>
+            Intelligent systems that augment human capacity — designed with semiotic awareness so
+            they communicate meaning, not just data. AI that serves the human ends for which it
+            was built, rather than optimizing away from them.
+          </p>
+        </article>
+        <article class="service-card">
+          <span class="eyebrow">Semiotics</span>
+          <h3>Semiotic UX Design</h3>
+          <p>
+            Interfaces are sign systems. We design experiences that speak clearly to every user —
+            grounded in Peircean semiotics and human-centered reasoning. Meaning is not incidental
+            to design; it is the point of it.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Human Flourishing -->
+  <section class="flourishing">
+    <div class="flourishing-inner">
+      <span class="eyebrow">On Human Flourishing</span>
+      <blockquote class="pull-quote">
+        "Software that serves eudaimonia — flourishing for clients, users, employees, and society."
+      </blockquote>
+      <div class="flourishing-body">
+        <p>
+          Aristotle called the highest human good <em>eudaimonia</em> — flourishing, not merely
+          pleasure or success. We take this seriously as a design constraint. Software that degrades
+          attention, exploits users, or externalizes harm onto society is, by definition, bad
+          software, regardless of its metrics.
+        </p>
+        <p>
+          The obligation runs in every direction: toward clients who need results they can stand
+          behind, toward users who deserve systems that respect their agency, toward employees who
+          do their best work when the work is worth doing, and toward the broader social fabric
+          that technology inevitably shapes. None of these are in fundamental conflict. Good
+          engineering serves all of them.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <span class="eyebrow">Start a Conversation</span>
+      <h2>Ready to build something enduring?</h2>
+      <a href="mailto:frontdoor@kecker.co" class="cta-email">frontdoor@kecker.co</a>
+    </div>
+  </section>
+
+</SiteShell>
