@@ -1,0 +1,50 @@
+---
+import SiteShell from '../layouts/SiteShell.astro';
+---
+
+<SiteShell title="Page not found" description="The page you were looking for doesn't exist.">
+  <section class="not-found">
+    <div class="not-found-inner">
+      <span class="eyebrow">404</span>
+      <h1>Page not found.</h1>
+      <p class="lede">
+        The page you were looking for doesn't exist, or it may have moved.
+      </p>
+      <a href="/" class="button button-primary">Back to home</a>
+    </div>
+  </section>
+</SiteShell>
+
+<style>
+  .not-found {
+    padding: 8rem 1.5rem 7rem;
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .not-found-inner {
+    max-width: 44rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .not-found .eyebrow {
+    margin-bottom: 1rem;
+  }
+
+  .not-found h1 {
+    margin-bottom: 1.5rem;
+  }
+
+  .not-found .lede {
+    margin-bottom: 2.5rem;
+  }
+
+  @media (max-width: 42rem) {
+    .not-found {
+      padding: 5rem 1rem 4rem;
+    }
+  }
+</style>

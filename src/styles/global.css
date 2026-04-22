@@ -22,7 +22,9 @@
   --color-faint: #999;
   --color-rule: #e0dbd5;
   --color-accent: #971b2f;
+  --color-accent-dark: #7a1527;
   --color-warm: #f3ede6;   /* tinted bg for feature sections */
+  --color-white: #ffffff;
 
   --max-width: 72rem;
   --prose-width: 44rem;
@@ -99,9 +101,9 @@ main {
 .eyebrow {
   display: block;
   font-family: var(--font-ui);
-  font-size: 0.72rem;
+  font-size: 0.8125rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-accent);
   margin-bottom: 0.75rem;
@@ -153,10 +155,10 @@ main {
 
 .button-primary {
   background: var(--color-accent);
-  color: #fff;
+  color: var(--color-white);
 }
 
-.button-primary:hover { background: #7a1527; }
+.button-primary:hover { background: var(--color-accent-dark); }
 
 .button-ghost {
   background: transparent;
@@ -171,7 +173,7 @@ main {
    ========================================================================== */
 
 .hero {
-  padding: 7rem 1.5rem 6rem;
+  padding: 8rem 1.5rem 6.5rem;
   border-bottom: 1px solid var(--color-rule);
 }
 
@@ -181,16 +183,23 @@ main {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 2rem;
+  gap: 0;
+}
+
+/* Eyebrow belongs to h1 — tight coupling */
+.hero .eyebrow {
+  margin-bottom: 1rem;
 }
 
 .hero h1 {
   max-width: 22ch;
   line-height: 1.08;
+  margin-bottom: 1.75rem;
 }
 
 .hero .lede {
   max-width: 42rem;
+  margin-bottom: 2.75rem;
 }
 
 .hero-actions {
@@ -205,7 +214,7 @@ main {
    ========================================================================== */
 
 .pillars {
-  padding: 5rem 1.5rem;
+  padding: 6rem 1.5rem 5rem;
   border-bottom: 1px solid var(--color-rule);
 }
 
@@ -264,7 +273,7 @@ main {
   font-size: clamp(1rem, 1.4vw, 1.125rem);
   line-height: 1.82;
   color: var(--color-text);
-  margin: 0.75rem 0 0;
+  margin: 1.25rem 0 0;
   max-width: 54rem;
 }
 
@@ -273,7 +282,7 @@ main {
    ========================================================================== */
 
 .services {
-  padding: 5rem 1.5rem;
+  padding: 4.5rem 1.5rem 4rem;
   border-bottom: 1px solid var(--color-rule);
 }
 
@@ -283,7 +292,7 @@ main {
 }
 
 .services-header {
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 }
 
 .services-grid {
@@ -302,7 +311,12 @@ main {
   border-bottom: 1px solid var(--color-rule);
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0;
+}
+
+/* Eyebrow tightly coupled to the heading it labels */
+.service-card .eyebrow {
+  margin-bottom: 0.4rem;
 }
 
 .service-card h3 {
@@ -310,16 +324,17 @@ main {
   font-size: clamp(1.2rem, 1.8vw, 1.5rem);
   font-weight: 400;
   color: var(--color-ink);
-  margin-top: 0.25rem;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
-/* EB Garamond body — intellectual register befitting the content */
+/* Body clearly separated from the heading unit above */
 .service-card p {
   font-family: var(--font-serif);
   font-size: clamp(1rem, 1.3vw, 1.1rem);
   color: var(--color-text);
   line-height: 1.8;
-  margin: 0.5rem 0 0;
+  margin: 1.25rem 0 0;
 }
 
 /* ==========================================================================
@@ -327,7 +342,7 @@ main {
    ========================================================================== */
 
 .flourishing {
-  padding: 6rem 1.5rem;
+  padding: 7rem 1.5rem;
   background: var(--color-warm);
 }
 
@@ -336,7 +351,12 @@ main {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 0;
+}
+
+/* Eyebrow belongs to the pull-quote — keep them close */
+.flourishing .eyebrow {
+  margin-bottom: 1.25rem;
 }
 
 .pull-quote {
@@ -347,7 +367,7 @@ main {
   line-height: 1.3;
   padding-left: 1.75rem;
   border-left: 3px solid var(--color-accent);
-  margin: 0;
+  margin: 0 0 3rem;
   max-width: 52rem;
 }
 
@@ -370,7 +390,7 @@ main {
    ========================================================================== */
 
 .cta-section {
-  padding: 6rem 1.5rem 7rem;
+  padding: 5rem 1.5rem 5.5rem;
   border-top: 1px solid var(--color-rule);
   text-align: center;
 }
@@ -381,11 +401,16 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 0;
+}
+
+/* Eyebrow belongs to the heading — close coupling */
+.cta-section .eyebrow {
+  margin-bottom: 0.875rem;
 }
 
 .cta-section h2 {
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  margin-bottom: 1.25rem;
 }
 
 .cta-studio {
@@ -395,7 +420,7 @@ main {
   color: var(--color-muted);
   max-width: 38rem;
   line-height: 1.75;
-  margin: 0;
+  margin: 0 0 2.5rem;
 }
 
 .cta-email {
@@ -492,6 +517,18 @@ main {
     padding: 5rem 1.5rem 4rem;
   }
 
+  .pillars {
+    padding: 4rem 1.5rem 3.5rem;
+  }
+
+  .services {
+    padding: 3rem 1.5rem 2.5rem;
+  }
+
+  .cta-section {
+    padding: 3.5rem 1.5rem 4rem;
+  }
+
   .pillar {
     grid-template-columns: 2.75rem 1fr;
     gap: 0 1.5rem;
@@ -529,4 +566,37 @@ main {
   .prose-page {
     padding: 2.5rem 1rem 4rem;
   }
+}
+
+/* ==========================================================================
+   Motion / Accessibility
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background: var(--color-ink);
+  color: var(--color-white);
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 0 0 6px 6px;
+  transition: top 0.1s;
+}
+
+.skip-link:focus {
+  top: 0;
 }

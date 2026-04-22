@@ -2,23 +2,38 @@
 import { NAV_LINKS, SITE_TITLE } from '../consts';
 ---
 
+<a href="#main-content" class="skip-link">Skip to content</a>
+
 <header>
   <nav class="nav-shell">
     <a class="brand" href="/" aria-label={SITE_TITLE}>
+      <!--
+        Inline SVG mark — inherits currentColor from .brand-name CSS,
+        so it stays in sync with the text color automatically.
+      -->
+      <svg class="brand-mark" viewBox="0 0 40 44" fill="currentColor" aria-hidden="true" focusable="false">
+        <rect x="3" y="3" width="5" height="38"/>
+        <polygon points="8,14 8,17 33,3 27,3"/>
+        <polygon points="8,18.5 8,21.5 27,41 33,41"/>
+      </svg>
       <span class="brand-name">Kecker</span>
     </a>
 
-    <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navLinks">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" focusable="false">
         <rect y="3" width="18" height="1.5" rx="0.75" fill="currentColor"/>
         <rect y="8" width="18" height="1.5" rx="0.75" fill="currentColor"/>
         <rect y="13" width="18" height="1.5" rx="0.75" fill="currentColor"/>
       </svg>
     </button>
 
-    <div class="nav-links" id="navLinks">
+    <div class="nav-links" id="navLinks" role="list">
       {NAV_LINKS.map((link) => (
-        <a href={link.href} class={Astro.url.pathname === link.href ? 'active' : undefined}>
+        <a
+          href={link.href}
+          role="listitem"
+          class={Astro.url.pathname === link.href ? 'active' : undefined}
+        >
           {link.label}
         </a>
       ))}
@@ -27,12 +42,43 @@ import { NAV_LINKS, SITE_TITLE } from '../consts';
 </header>
 
 <script>
-  const toggle = document.getElementById('navToggle');
-  const links = document.getElementById('navLinks');
+  const toggle = document.getElementById('navToggle') as HTMLButtonElement | null;
+  const links  = document.getElementById('navLinks');
+
+  function openNav() {
+    toggle?.setAttribute('aria-expanded', 'true');
+    toggle?.setAttribute('aria-label', 'Close navigation');
+    links?.classList.add('open');
+  }
+
+  function closeNav() {
+    toggle?.setAttribute('aria-expanded', 'false');
+    toggle?.setAttribute('aria-label', 'Open navigation');
+    links?.classList.remove('open');
+  }
+
   toggle?.addEventListener('click', () => {
-    const expanded = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!expanded));
-    links?.classList.toggle('open');
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    isOpen ? closeNav() : openNav();
+  });
+
+  // Close when clicking outside the nav
+  document.addEventListener('click', (e) => {
+    if (
+      links?.classList.contains('open') &&
+      !links.contains(e.target as Node) &&
+      !toggle?.contains(e.target as Node)
+    ) {
+      closeNav();
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && links?.classList.contains('open')) {
+      closeNav();
+      toggle?.focus();
+    }
   });
 </script>
 
@@ -43,7 +89,7 @@ import { NAV_LINKS, SITE_TITLE } from '../consts';
     z-index: 50;
     background: rgba(250, 249, 247, 0.95);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid #e0dbd5;
+    border-bottom: 1px solid var(--color-rule);
   }
 
   .nav-shell {
@@ -51,22 +97,34 @@ import { NAV_LINKS, SITE_TITLE } from '../consts';
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    max-width: 72rem;
+    max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 1.5rem;
     height: 3.5rem;
   }
 
   .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     text-decoration: none;
     flex-shrink: 0;
+    color: var(--color-ink);
+  }
+
+  .brand-mark {
+    width: 18px;
+    height: auto;
+    flex-shrink: 0;
+    /* Slightly optical-corrected vertical alignment */
+    margin-top: -1px;
   }
 
   .brand-name {
-    font-family: 'EB Garamond', Georgia, serif;
+    font-family: var(--font-serif);
     font-size: 1.35rem;
     font-weight: 400;
-    color: #111;
+    color: var(--color-ink);
     letter-spacing: -0.01em;
     line-height: 1;
   }
@@ -78,23 +136,23 @@ import { NAV_LINKS, SITE_TITLE } from '../consts';
   }
 
   .nav-links a {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: var(--font-ui);
     font-size: 0.8125rem;
     font-weight: 500;
-    color: #666;
+    color: var(--color-muted);
     text-decoration: none;
     transition: color 0.12s;
   }
 
-  .nav-links a:hover { color: #111; }
-  .nav-links a.active { color: #971b2f; }
+  .nav-links a:hover { color: var(--color-ink); }
+  .nav-links a.active { color: var(--color-accent); }
 
   .nav-toggle {
     display: none;
     padding: 0.375rem;
     border: none;
     background: transparent;
-    color: #666;
+    color: var(--color-muted);
     cursor: pointer;
   }
 
@@ -110,8 +168,8 @@ import { NAV_LINKS, SITE_TITLE } from '../consts';
       right: 0;
       flex-direction: column;
       align-items: stretch;
-      background: #faf9f7;
-      border-bottom: 1px solid #e0dbd5;
+      background: var(--color-bg);
+      border-bottom: 1px solid var(--color-rule);
       padding: 0.5rem 1rem 1rem;
       gap: 0;
     }
@@ -121,7 +179,7 @@ import { NAV_LINKS, SITE_TITLE } from '../consts';
     .nav-links a {
       padding: 0.75rem 0;
       font-size: 0.9375rem;
-      border-bottom: 1px solid #e0dbd5;
+      border-bottom: 1px solid var(--color-rule);
     }
 
     .nav-links a:last-child { border-bottom: none; }

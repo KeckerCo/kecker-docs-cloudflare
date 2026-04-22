@@ -1,0 +1,15 @@
+<svg viewBox="0 0 40 44" fill="currentColor" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kecker">
+  <title>Kecker</title>
+  <!--
+    Kecker logomark — geometric K
+    Proportions: vertical stem 5u wide; arm junction at golden ratio (≈38.2%) from top.
+    Use fill="currentColor" to inherit color from CSS, or override fill directly.
+    Safe minimum size: 16×18px.
+  -->
+  <!-- Vertical stem -->
+  <rect x="3" y="3" width="5" height="38"/>
+  <!-- Upper arm — inner junction at golden ratio point -->
+  <polygon points="8,14 8,17 33,3 27,3"/>
+  <!-- Lower arm -->
+  <polygon points="8,18.5 8,21.5 27,41 33,41"/>
+</svg>

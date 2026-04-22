@@ -13,7 +13,7 @@ const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | ${SITE_TITLE}`
   <head><BaseHead title={pageTitle} description={description} /></head>
   <body>
     <Header />
-    <main><slot /></main>
+    <main id="main-content"><slot /></main>
     <Footer />
   </body>
 </html>

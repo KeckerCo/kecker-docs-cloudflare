@@ -25,7 +25,7 @@ const today = new Date();
 
 <style>
   footer {
-    border-top: 1px solid #e0dbd5;
+    border-top: 1px solid var(--color-rule);
     padding: 1.5rem;
   }
 
@@ -35,7 +35,7 @@ const today = new Date();
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 0.75rem 2rem;
-    max-width: 72rem;
+    max-width: var(--max-width);
     margin: 0 auto;
   }
 
@@ -47,20 +47,20 @@ const today = new Date();
 
   .footer-copy {
     margin: 0;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: var(--font-ui);
     font-size: 0.8125rem;
-    color: #999;
+    color: var(--color-faint);
   }
 
   .footer-privacy {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: var(--font-ui);
     font-size: 0.8125rem;
-    color: #999;
+    color: var(--color-faint);
     text-decoration: none;
     transition: color 0.12s;
   }
 
-  .footer-privacy:hover { color: #971b2f; }
+  .footer-privacy:hover { color: var(--color-accent); }
 
   .footer-social {
     display: flex;
@@ -69,12 +69,12 @@ const today = new Date();
   }
 
   .footer-social a {
-    color: #999;
+    color: var(--color-faint);
     text-decoration: none;
     display: flex;
     align-items: center;
     transition: color 0.12s;
   }
 
-  .footer-social a:hover { color: #971b2f; }
+  .footer-social a:hover { color: var(--color-accent); }
 </style>

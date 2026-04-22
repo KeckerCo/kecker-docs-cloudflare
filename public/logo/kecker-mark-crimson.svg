@@ -1,0 +1,7 @@
+<svg viewBox="0 0 40 44" fill="#971b2f" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kecker">
+  <title>Kecker</title>
+  <!-- Kecker logomark — crimson variant for use on light backgrounds -->
+  <rect x="3" y="3" width="5" height="38"/>
+  <polygon points="8,14 8,17 33,3 27,3"/>
+  <polygon points="8,18.5 8,21.5 27,41 33,41"/>
+</svg>

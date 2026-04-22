@@ -2,15 +2,25 @@
   "name": "kecker-docs-cloudflare",
   "type": "module",
   "version": "1.0.0",
-  "engines": { "node": ">=22.0.0" },
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "astro": "^5.7.0",
     "wrangler": "^4.84.0"
+  },
+  "devDependencies": {
+    "@astrojs/sitemap": "^3.7.2",
+    "@storybook/addon-essentials": "^8.6.18",
+    "@storybook/html-vite": "^8.6.18",
+    "storybook": "^8.6.18"
   }
 }

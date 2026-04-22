@@ -1,0 +1,37 @@
+<!--
+  Kecker wordmark SVG
+  Combines the geometric K mark with the "Kecker" logotype.
+  The logotype uses EB Garamond via a @font-face import; the file degrades
+  gracefully to Georgia serif where the font is unavailable.
+  For contexts where self-contained vector paths are required, convert the
+  <text> element to paths using Inkscape or Figma (Text > Object to Path).
+-->
+<svg viewBox="0 0 200 44" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kecker">
+  <title>Kecker</title>
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400&amp;display=swap');
+      .wm-text {
+        font-family: 'EB Garamond', 'Iowan Old Style', Georgia, serif;
+      }
+    </style>
+  </defs>
+
+  <!-- K mark -->
+  <g fill="#111111">
+    <rect x="3" y="3" width="5" height="38"/>
+    <polygon points="8,14 8,17 33,3 27,3"/>
+    <polygon points="8,18.5 8,21.5 27,41 33,41"/>
+  </g>
+
+  <!-- Logotype -->
+  <text
+    x="48"
+    y="33"
+    class="wm-text"
+    font-size="28"
+    font-weight="400"
+    fill="#111111"
+    letter-spacing="-0.01em"
+  >Kecker</text>
+</svg>

@@ -1,0 +1,436 @@
+---
+import SiteShell from '../../layouts/SiteShell.astro';
+---
+
+<SiteShell title="How We Built Kecker" description="A deep dive into how kecker.co was built with Astro 5 and Cloudflare Pages, written for Android developers stepping into web for the first time.">
+  <article class="prose-page">
+    <header class="prose-header">
+      <span class="eyebrow">Behind the Build</span>
+      <h1>How We Built kecker.co</h1>
+      <p class="lede">A guide for Android developers stepping into web for the first time.</p>
+    </header>
+
+    <div class="reading-body">
+
+      <p>
+        If you have shipped Android apps, you already know how to think in components, build systems,
+        and deployment pipelines. The web uses different words for the same ideas. This post maps
+        the concepts you already know onto the tools we used to build kecker.co, so you can read
+        the codebase and understand every decision without having to learn web from scratch first.
+      </p>
+
+      <!-- ============================================================ -->
+      <h2>1. The Stack at a Glance</h2>
+
+      <p>Here is everything involved in building and shipping kecker.co:</p>
+
+      <ul>
+        <li><strong>Astro 5</strong> — static site generator (the build system for HTML)</li>
+        <li><strong>Cloudflare Pages</strong> — hosting and global CDN</li>
+        <li><strong>Wrangler</strong> — Cloudflare's CLI deployment tool</li>
+        <li><strong>GitHub</strong> — source code hosting and version control</li>
+        <li><strong>EB Garamond + Inter</strong> — typefaces, loaded from Google Fonts</li>
+        <li><strong>CSS custom properties</strong> — design tokens (colors, spacing, type scale)</li>
+        <li><strong>Storybook</strong> — isolated component development environment</li>
+      </ul>
+
+      <p>
+        No React. No Vue. No Angular. No JavaScript framework at all. The site is plain HTML and CSS
+        generated at build time. That is the whole point of static site generation, and we will get
+        into exactly what that means.
+      </p>
+
+      <!-- ============================================================ -->
+      <h2>2. Astro: A Build System for HTML</h2>
+
+      <p>
+        Astro is a static site generator. The simplest way to understand it: Astro takes your source
+        files and transforms them into plain HTML, CSS, and JavaScript files that any web server can
+        serve. Think of it like Gradle, but instead of compiling Kotlin into an APK, it compiles
+        <code>.astro</code> files into a <code>dist/</code> folder full of HTML files.
+      </p>
+
+      <p>
+        In Android, your UI exists at runtime. Activities, Fragments, and Views are instantiated
+        by the framework when the user launches your app, and the layout is inflated on-device.
+        In Astro, there is no runtime. Pages, Layouts, and Components are rendered once during
+        <code>npm run build</code>, and the output is a set of static files. When someone visits
+        kecker.co, the server is not running any code. It just sends back a pre-built HTML file.
+      </p>
+
+      <p>
+        The build command comparison is nearly one-to-one:
+      </p>
+
+      <pre><code># Android
+./gradlew assembleRelease   → outputs build/outputs/apk/release/app-release.apk
+
+# Astro
+npm run build               → outputs dist/ folder full of .html files</code></pre>
+
+      <p>
+        Astro files end in <code>.astro</code> and have two sections. The top is a frontmatter
+        block, wrapped in <code>---</code> delimiters, where you write TypeScript that runs at
+        build time. Below the frontmatter is the HTML template. Think of the frontmatter like a
+        Gradle build script: it runs during compilation, can import other modules, fetch data, and
+        compute values that get injected into the HTML template below it.
+      </p>
+
+      <pre><code>---
+// This TypeScript runs at build time, not in the browser
+import Header from '../components/Header.astro';
+const title = "Hello from build time";
+---
+
+&lt;!-- This HTML is the output template --&gt;
+&lt;h1&gt;&#123;title&#125;&lt;/h1&gt;</code></pre>
+
+      <!-- ============================================================ -->
+      <h2>3. File Structure: How Routing Works</h2>
+
+      <p>
+        Astro uses file-based routing. Every <code>.astro</code> file inside <code>src/pages/</code>
+        automatically becomes a URL. No router configuration. No manifest. No intent filters to
+        register. Just put a file in the right folder.
+      </p>
+
+      <ul>
+        <li><code>src/pages/index.astro</code> → <code>kecker.co/</code></li>
+        <li><code>src/pages/privacy.astro</code> → <code>kecker.co/privacy</code></li>
+        <li><code>src/pages/404.astro</code> → served when any URL is not found</li>
+        <li><code>src/pages/blog/how-we-built-kecker.astro</code> → <code>kecker.co/blog/how-we-built-kecker</code></li>
+      </ul>
+
+      <p>
+        The Android analogy: in Android, each Activity declares which Intents it handles in
+        <code>AndroidManifest.xml</code>. You explicitly register every screen. In Astro, the
+        file path is the declaration. A file's location in <code>src/pages/</code> is its own
+        routing configuration. Fewer places to look when something is broken.
+      </p>
+
+      <!-- ============================================================ -->
+      <h2>4. Layouts and Components: Like Fragments and ViewGroups</h2>
+
+      <p>
+        Almost every page on kecker.co starts with the same wrapper:
+      </p>
+
+      <pre><code>---
+import SiteShell from '../layouts/SiteShell.astro';
+---
+
+&lt;SiteShell title="Page Title" description="..."&gt;
+  &lt;!-- page content goes here --&gt;
+&lt;/SiteShell&gt;</code></pre>
+
+      <p>
+        <code>SiteShell.astro</code> is the master layout. It wraps every page with the
+        <code>&lt;html&gt;</code> and <code>&lt;head&gt;</code> tags, mounts the
+        <code>Header</code> component at the top, and the <code>Footer</code> component at the
+        bottom. Compare this to having a <code>BaseActivity</code> in Android that all your
+        activities extend, automatically providing a toolbar and bottom navigation. Every page
+        gets the site chrome without repeating it.
+      </p>
+
+      <p>
+        Inside <code>SiteShell.astro</code>, there is a single <code>&lt;slot /&gt;</code> tag.
+        This is the insertion point where child page content gets placed. Think of
+        <code>&lt;slot /&gt;</code> as a <code>FrameLayout</code> in a base layout XML: it is the
+        container that child Fragments (or in this case, page content) inflate into.
+      </p>
+
+      <p>
+        Components like <code>Header.astro</code>, <code>Footer.astro</code>, and
+        <code>BaseHead.astro</code> live in <code>src/components/</code>. They are reusable pieces
+        of UI, exactly like custom Views or reusable Fragment classes in Android. The difference is
+        that they produce HTML strings at build time rather than View objects at runtime.
+      </p>
+
+      <p>
+        Components accept props, declared with a TypeScript interface at the top of the frontmatter:
+      </p>
+
+      <pre><code>---
+interface Props &#123;
+  title: string;
+  description: string;
+&#125;
+const &#123; title, description &#125; = Astro.props;
+---</code></pre>
+
+      <p>
+        This is the same pattern as passing a <code>Bundle</code> of extras to a Fragment, or
+        exposing properties on a ViewModel. The parent passes values in; the component uses them
+        to render its output.
+      </p>
+
+      <!-- ============================================================ -->
+      <h2>5. CSS: Like XML Layouts, But More Powerful</h2>
+
+      <p>
+        In Android, you define how things look in <code>res/layout/*.xml</code> and style them
+        with <code>styles.xml</code> and <code>attrs.xml</code>. On the web, CSS handles all of
+        that in one language. Instead of <code>android:textColor="#111111"</code>, you write
+        <code>color: #111111</code>. Instead of <code>android:layout_marginTop="16dp"</code>,
+        you write <code>margin-top: 16px</code>.
+      </p>
+
+      <p>
+        CSS custom properties are the web equivalent of your <code>colors.xml</code> resource
+        file. You define them once on the root element and reference them everywhere:
+      </p>
+
+      <pre><code>/* global.css */
+:root &#123;
+  --color-accent: #971b2f;
+  --font-body: 'EB Garamond', serif;
+  --space-lg: 2rem;
+&#125;
+
+/* Use them anywhere */
+h1 &#123;
+  color: var(--color-accent);
+  font-family: var(--font-body);
+  margin-bottom: var(--space-lg);
+&#125;</code></pre>
+
+      <p>
+        Change <code>--color-accent</code> in one place and every element that references it
+        updates automatically. This is exactly how <code>@color/accent</code> works in Android
+        resource references.
+      </p>
+
+      <p>
+        Astro also scopes styles automatically. When you write a <code>&lt;style&gt;</code> block
+        inside a <code>.astro</code> component, those styles only apply to that component's HTML.
+        Astro achieves this by injecting a unique attribute (like <code>data-astro-cid-xxxxxx</code>)
+        onto the component's elements and adding that attribute to all the CSS selectors at build
+        time. It is similar to how a custom View in Android that draws its own background does not
+        affect its neighbors. Styles stay local unless you explicitly make them global.
+      </p>
+
+      <p>
+        Global styles live in <code>src/styles/global.css</code> and are the web equivalent of
+        your base <code>AppTheme</code> in <code>styles.xml</code>. They set defaults for typography,
+        spacing, and color that apply site-wide.
+      </p>
+
+      <!-- ============================================================ -->
+      <h2>6. The Design System: A tokens.ts Shared Resource</h2>
+
+      <p>
+        <code>src/design-system/tokens.ts</code> exports all color, font, and spacing values as
+        TypeScript constants. Think of it as a <code>DesignTokens.kt</code> file in your Android
+        project that defines every value in your Material theme, kept outside of XML so it can be
+        referenced from code.
+      </p>
+
+      <pre><code>// tokens.ts
+export const colors = &#123;
+  accent: '#971b2f',
+  ink: '#1a1a1a',
+  paper: '#faf8f3',
+&#125;;
+
+export const fonts = &#123;
+  serif: "'EB Garamond', Georgia, serif",
+  sans: "'Inter', system-ui, sans-serif",
+&#125;;</code></pre>
+
+      <p>
+        Both the CSS custom properties and the Storybook configuration pull values from this file.
+        When you change a token here, every consumer updates. This is the single source of truth
+        principle: design values live in one place, not scattered across multiple files where they
+        can drift out of sync.
+      </p>
+
+      <!-- ============================================================ -->
+      <h2>7. The Logo: SVG Vector Format</h2>
+
+      <p>
+        The K mark is stored as an SVG file in <code>public/logo/</code>. SVG stands for Scalable
+        Vector Graphics. It is the exact same concept as a Vector Drawable in Android: a resolution-
+        independent format defined with mathematical paths rather than a fixed grid of pixels. It
+        looks sharp at any size, from a 16px favicon to a full-screen display.
+      </p>
+
+      <p>
+        The SVG uses <code>fill="currentColor"</code> on its path elements. This is a CSS keyword
+        that means "inherit the text color from my parent." In CSS you can then write
+        <code>color: white</code> on the parent element to make the logo white, or
+        <code>color: var(--color-accent)</code> to make it the brand color. This is equivalent to
+        applying <code>android:tint</code> programmatically, except it is pure CSS with no code
+        required.
+      </p>
+
+      <p>
+        The <code>public/</code> folder is Astro's equivalent of <code>res/raw/</code> or
+        <code>res/drawable/</code>. Files placed there are copied directly to the output
+        <code>dist/</code> folder without any processing or transformation. Static assets like
+        fonts, images, and favicons live here.
+      </p>
+
+      <!-- ============================================================ -->
+      <h2>8. Storybook: Like a UI Component Gallery</h2>
+
+      <p>
+        Storybook is a development tool that lets you view and interact with individual components
+        in isolation, without running the full site. You launch it with <code>npm run storybook</code>
+        and it opens a local web app where every component is listed and rendered on its own.
+      </p>
+
+      <p>
+        The Android parallel: imagine having a standalone debug app in your project that renders
+        all your custom Views and Composables in a scrollable list, letting you tweak their props
+        and see how they look in different states. No need to navigate through six screens to reach
+        the component you are working on. Storybook is exactly that, for web components.
+      </p>
+
+      <p>
+        Each file in <code>src/stories/</code> defines a "story": a specific rendered state of a
+        component. A button story might show the default state, a loading state, and a disabled
+        state side by side. This makes it easy to develop and review components without touching
+        the rest of the site.
+      </p>
+
+      <!-- ============================================================ -->
+      <h2>9. Deployment: Cloudflare Pages Instead of Google Play</h2>
+
+      <p>
+        Google Play distributes APKs to users' devices. Cloudflare Pages distributes HTML, CSS,
+        and JavaScript files to servers around the world. The concept is the same: you upload
+        your built artifact to a distribution network, and users receive it from there.
+      </p>
+
+      <p>
+        Cloudflare operates a global edge network, which is a CDN (Content Delivery Network).
+        When a user in Tokyo visits kecker.co, Cloudflare serves the files from a data center near
+        Tokyo rather than from wherever your origin server happens to be. This is similar to how
+        Google Play mirrors APKs to regional servers so that downloads are fast regardless of
+        where the user is located.
+      </p>
+
+      <p>
+        Wrangler is the CLI tool for deploying to Cloudflare. It is the <code>bundletool</code>
+        of the web world. After running <code>npm run build</code>, you deploy the output folder:
+      </p>
+
+      <pre><code>npx wrangler pages deploy dist --project-name kecker-docs</code></pre>
+
+      <p>
+        <code>dist</code> is the folder Astro wrote during the build step. <code>kecker-docs</code>
+        is the name of the project in your Cloudflare Pages dashboard, which does not have to match
+        your repository name. Wrangler uploads the files, Cloudflare propagates them to its edge
+        nodes, and the new version is live within seconds.
+      </p>
+
+      <p>
+        GitHub stores the source code, not the built output. Pushing to GitHub is your version
+        control commit, not your deployment. The two steps are intentionally separate. Cloudflare
+        can also be configured to auto-deploy whenever you push to a branch (continuous deployment),
+        but the site currently deploys manually via the Wrangler command above.
+      </p>
+
+      <!-- ============================================================ -->
+      <h2>10. The Build-Deploy Cycle</h2>
+
+      <p>
+        Here is the full workflow from edit to live, written out as a recipe:
+      </p>
+
+      <ol>
+        <li>Edit files in <code>src/</code>.</li>
+        <li>
+          Run <code>npm run dev</code>. This starts a local development server at
+          <code>localhost:4321</code>. Like running the app in the Android Emulator: your
+          changes appear in the browser instantly as you save files, no rebuild required.
+        </li>
+        <li>
+          When you are happy with the changes, run <code>npm run build</code>. Astro compiles
+          all pages and writes the output to <code>dist/</code>. This is your release build.
+          Check <code>dist/</code> to confirm the files look right.
+        </li>
+        <li>
+          Deploy to Cloudflare:<br />
+          <code>npx wrangler pages deploy dist --project-name kecker-docs</code>
+        </li>
+        <li>
+          Save to GitHub:<br />
+          <code>git add . &amp;&amp; git commit -m "Your message" &amp;&amp; git push</code>
+        </li>
+      </ol>
+
+      <p>
+        Steps 4 and 5 are independent. Cloudflare does not know about GitHub unless you configure
+        integration. Deploying to Cloudflare makes the site live. Pushing to GitHub saves your
+        history. Both matter.
+      </p>
+
+      <!-- ============================================================ -->
+      <h2>11. What "Static Site Generation" Actually Means</h2>
+
+      <p>
+        There are two broad models for delivering web pages to users. The first: a server receives
+        a request, runs code, builds an HTML response, and sends it back. This is what most app
+        backends do. The second: HTML is generated once at build time from source files, the output
+        is stored as plain files, and a server sends those files directly without running any code.
+        Astro does the second.
+      </p>
+
+      <p>
+        When someone visits kecker.co, Cloudflare sends back a pre-built HTML file from its edge
+        node. There is no application server. No database query. No server-side code execution.
+        Just a file transfer. This is extremely fast and costs almost nothing to operate.
+      </p>
+
+      <p>
+        Here is the Android analogy that makes this click: imagine if, instead of inflating layouts
+        at runtime, you pre-rendered every screen as a bitmap during the Gradle build and just
+        displayed the right bitmap when the user navigated to that screen. No inflation, no binding,
+        no layout pass. Just read a file and display it. That is static site generation. It works
+        perfectly for content that is the same for every visitor, which describes a marketing and
+        documentation site like kecker.co completely.
+      </p>
+
+      <p>
+        The tradeoff: because everything is pre-built, pages cannot vary per user. There is no
+        "show this user's name in the header." For that you would reach for a framework with
+        server-side rendering. But for kecker.co, static is exactly the right choice.
+      </p>
+
+      <!-- ============================================================ -->
+      <h2>12. Where to Go From Here</h2>
+
+      <p>
+        If you want to go deeper on any of these topics, these are the resources worth your time:
+      </p>
+
+      <ul>
+        <li>
+          <strong><a href="https://docs.astro.build" target="_blank" rel="noopener">docs.astro.build</a></strong>
+          — the official Astro documentation. Well-written, with clear examples. Start with the
+          "Getting Started" guide and the "Core Concepts" section.
+        </li>
+        <li>
+          <strong><a href="https://web.dev" target="_blank" rel="noopener">web.dev</a></strong>
+          — Google's web fundamentals guide. Particularly good for Android developers because it
+          explains performance, layout, and CSS in terms that align with how mobile engineers
+          already think. The "Learn CSS" course is excellent.
+        </li>
+        <li>
+          <strong><a href="https://developer.mozilla.org" target="_blank" rel="noopener">developer.mozilla.org</a></strong>
+          (MDN Web Docs) — the authoritative reference for every web API, CSS property, and HTML
+          element. Think of it as the Android developer documentation, but for the web platform.
+          Whenever you see an unfamiliar CSS property or HTML tag, MDN is the first place to look.
+        </li>
+      </ul>
+
+      <p>
+        The web platform is large, but the fundamentals are stable. HTML, CSS, and the idea that
+        a URL maps to a file have not changed in thirty years. Once those are solid, every
+        framework you encounter is just a different way of generating the same output.
+      </p>
+
+    </div>
+  </article>
+</SiteShell>
