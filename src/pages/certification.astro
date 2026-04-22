@@ -1,10 +1,48 @@
 ---
 import SiteShell from '../layouts/SiteShell.astro';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://kecker.co/certification/#service',
+  name: 'K Score Certification',
+  alternateName: 'K Score',
+  provider: { '@id': 'https://kecker.co/#organization' },
+  serviceType: 'Software Ethics Certification',
+  description:
+    'Certification grading software products and engineers on a 0–100 scale measuring proportionality to genuine human flourishing. Evaluation criteria drawn from the classical properties of beauty (integritas, consonantia, claritas) and the Vitruvian triad (firmitas, utilitas, venustas).',
+  url: 'https://kecker.co/certification/',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Certification Tracks',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Software Certification',
+          description:
+            'Evaluation of software products and codebases against the K Score standard. Produces a score, a detailed evaluation report, and the right to display the K certification mark.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Engineer Certification',
+          description:
+            'Evaluation of individual engineers on ethics, decision-making under pressure, tradeoff handling, and quality of systems built.',
+        },
+      },
+    ],
+  },
+};
 ---
 
 <SiteShell
   title="K Score Certification"
-  description="The K Score is the organic label of software engineering. It certifies software and engineers against a standard rooted in genuine human flourishing.">
+  description="The K Score certifies software and engineers on a 0–100 scale measuring genuine human flourishing. Based on classical beauty theory and the Vitruvian triad: durability, usefulness, and beauty."
+  {schema}>
 
   <!-- ── Hero ──────────────────────────────────────────────────────────── -->
   <section class="hero">

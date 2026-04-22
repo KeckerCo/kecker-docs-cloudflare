@@ -1,8 +1,28 @@
 ---
 import SiteShell from '../../layouts/SiteShell.astro';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  '@id': 'https://kecker.co/blog/how-we-built-kecker/#article',
+  headline: 'How We Built kecker.co',
+  description:
+    'A step-by-step guide to building kecker.co with Astro 5, Cloudflare Pages, EB Garamond typography, and a portable design system. Written for Android developers stepping into web for the first time.',
+  author: { '@id': 'https://kecker.co/#organization' },
+  publisher: { '@id': 'https://kecker.co/#organization' },
+  url: 'https://kecker.co/blog/how-we-built-kecker/',
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': 'https://kecker.co/blog/how-we-built-kecker/',
+  },
+  keywords: ['Astro', 'Cloudflare Pages', 'web development', 'design system', 'Android developer', 'static site'],
+};
 ---
 
-<SiteShell title="How We Built Kecker" description="A deep dive into how kecker.co was built with Astro 5 and Cloudflare Pages, written for Android developers stepping into web for the first time.">
+<SiteShell
+  title="How We Built Kecker"
+  description="Step-by-step: how kecker.co was built with Astro 5, Cloudflare Pages, and a portable design system — written for Android developers new to web."
+  {schema}>
   <article class="prose-page">
     <header class="prose-header">
       <span class="eyebrow">Behind the Build</span>

@@ -1,9 +1,54 @@
 ---
 import SiteShell from '../layouts/SiteShell.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://kecker.co/#website',
+  name: SITE_TITLE,
+  url: 'https://kecker.co',
+  publisher: { '@id': 'https://kecker.co/#organization' },
+  mainEntity: {
+    '@type': 'ItemList',
+    name: 'Services',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        item: {
+          '@type': 'Service',
+          name: 'Mobile & Web Engineering',
+          description: 'Mobile and web applications built on deliberate architecture that holds up under growth and change.',
+          provider: { '@id': 'https://kecker.co/#organization' },
+        },
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        item: {
+          '@type': 'Service',
+          name: 'AI Systems',
+          description: 'AI systems designed to augment human capability — transparent, explainable, and aligned with user needs.',
+          provider: { '@id': 'https://kecker.co/#organization' },
+        },
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        item: {
+          '@type': 'Service',
+          name: 'Semiotic UX Design',
+          description: 'Interfaces designed around what they communicate, not just what they do. Meaning and function as a single problem.',
+          provider: { '@id': 'https://kecker.co/#organization' },
+        },
+      },
+    ],
+  },
+};
 ---
 
-<SiteShell title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<SiteShell title={SITE_TITLE} description={SITE_DESCRIPTION} {schema}>
 
   <!-- Hero -->
   <section class="hero">

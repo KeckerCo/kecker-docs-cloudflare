@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#141414"/>
+      <stop offset="100%" stop-color="#1a1a1a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Crimson left accent bar -->
+  <rect x="0" y="0" width="6" height="630" fill="#971b2f"/>
+
+  <!-- Faint large K glyph (right half, watermark) -->
+  <g opacity="0.08" fill="#ffffff" transform="translate(616.7,571.1) scale(0.7879,-0.7879)">
+    <path d="M60 -5Q47 -5 39.0 -2.5Q31 0 31 6Q31 18 64 24Q102 31 116.5 47.5Q131 64 131 101V551Q131 586 116.5 600.5Q102 615 64 622Q31 628 31 642Q31 648 39.0 650.5Q47 653 60 653Q87 653 103.5 652.5Q120 652 135.0 651.5Q150 651 172 651Q191 651 202.5 651.5Q214 652 228.0 652.5Q242 653 269 653Q282 653 290.0 650.5Q298 648 298 642Q298 635 290.0 630.0Q282 625 265 622Q228 615 219.5 597.5Q211 580 211 551V364Q211 360 211.5 352.5Q212 345 216 345Q221 345 229.5 351.0Q238 357 243 363L443 567Q451 575 454.5 582.5Q458 590 458 597Q458 615 439 620Q422 625 415.0 629.0Q408 633 408 640Q408 646 416.0 648.5Q424 651 437 651H491Q520 651 555.0 652.0Q590 653 618.5 654.0Q647 655 653 655Q663 655 669.0 652.0Q675 649 675 644Q675 637 667.0 632.0Q659 627 642 624Q605 617 565.0 602.0Q525 587 490 558Q454 528 423.5 499.5Q393 471 363.0 440.5Q333 410 298 371Q292 365 303 353L545 95Q567 71 580.5 58.0Q594 45 610.5 37.5Q627 30 655 24Q672 20 680.0 16.5Q688 13 688 6Q688 0 680.0 -2.5Q672 -5 659 -5Q630 -5 609.0 -3.5Q588 -2 568.0 -1.0Q548 0 520 0Q501 0 487.0 -0.5Q473 -1 439 -1Q426 -1 418.0 1.5Q410 4 410 10Q410 21 437 27Q465 34 465 47Q465 53 460.5 59.0Q456 65 450 72L238 306Q232 312 225.5 317.5Q219 323 215 323Q211 323 211.0 315.0Q211 307 211 302Q211 255 212.5 212.5Q214 170 216 110Q217 89 222.5 71.0Q228 53 241.5 41.0Q255 29 280 24Q297 21 305.0 17.0Q313 13 313 6Q313 0 305.0 -2.5Q297 -5 284 -5Q257 -5 242.5 -3.0Q228 -1 216.5 0.5Q205 2 186 2Q162 2 143.5 0.5Q125 -1 106.0 -3.0Q87 -5 60 -5Z"/>
+  </g>
+
+  <!-- Text block: left side -->
+  <!-- Kecker wordmark -->
+  <text x="72" y="220" font-family="Georgia, 'Times New Roman', serif" font-size="88" font-weight="400" fill="#ffffff" letter-spacing="-2">Kecker</text>
+
+  <!-- Tagline line 1 -->
+  <text x="76" y="302" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-style="italic" fill="#cccccc">Software as Language.</text>
+
+  <!-- Tagline line 2 -->
+  <text x="76" y="344" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-style="italic" fill="#cccccc">Reason as Method.</text>
+
+  <!-- Descriptor -->
+  <text x="76" y="406" font-family="'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#999999" letter-spacing="3">SEMIOTICS · SOFTWARE · AI</text>
+
+  <!-- Domain -->
+  <text x="76" y="574" font-family="'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#971b2f" letter-spacing="2">KECKER.CO</text>
+</svg>
