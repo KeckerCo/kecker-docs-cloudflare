@@ -1,0 +1,442 @@
+---
+import SiteShell from '../layouts/SiteShell.astro';
+---
+
+<SiteShell
+  title="K Score Certification"
+  description="The K Score is the organic label of software engineering. It certifies software and engineers against a standard rooted in genuine human flourishing.">
+
+  <!-- ── Hero ──────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">Certification Services</span>
+      <h1>The K Score.</h1>
+      <p class="lede">
+        Software is evaluated by whether it ships and whether it crashes.
+        Those are minimum bars. They say nothing about what the software
+        actually does to the people who use it, the people who built it,
+        or the world it runs in. The K Score measures what those bars miss.
+      </p>
+      <div class="hero-actions">
+        <a href="mailto:frontdoor@kecker.co" class="button button-primary">Apply for Certification</a>
+        <a href="#criteria" class="text-link">See the criteria ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── The Organic Label ─────────────────────────────────────────────── -->
+  <section class="flourishing cert-label">
+    <div class="flourishing-inner">
+      <span class="eyebrow">What It Is</span>
+      <blockquote class="pull-quote">
+        The organic label of software engineering.
+      </blockquote>
+      <div class="flourishing-body">
+        <p>
+          An organic food certification does not tell you the food tastes good.
+          It tells you that specific standards were met in how it was grown.
+          It is a verifiable claim about process and value, not a marketing
+          assertion. The K Score works the same way. It tells you that software
+          was built to a standard that accounts for everyone it touches.
+        </p>
+        <p>
+          The score is a number from 0 to 100. It measures how proportional the
+          work is to genuine human flourishing. Not efficiency, not engagement,
+          not growth metrics. The question behind every criterion is the same:
+          does this make things genuinely better for the people involved?
+          That is what gets measured.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Three Classical Properties ───────────────────────────────────── -->
+  <section class="pillars" id="criteria">
+    <div class="pillars-inner">
+      <div class="pillars-header">
+        <span class="eyebrow">The Standard</span>
+        <h2>Three properties. Evaluated without compromise.</h2>
+        <p class="cert-intro">
+          The criteria come from a question serious thinkers have tried to answer
+          for two thousand years: what makes something genuinely good, not just
+          apparently good? Three properties consistently emerge across traditions
+          and formulations.
+        </p>
+      </div>
+      <div class="pillars-list">
+
+        <article class="pillar">
+          <div class="pillar-mark" aria-hidden="true">I</div>
+          <div class="pillar-content">
+            <h3>Wholeness</h3>
+            <p class="pillar-tagline"><em>Integritas.</em> Nothing missing. Nothing superfluous.</p>
+            <p class="pillar-body">
+              The thing is complete. Every part serves the whole. A software
+              system fails wholeness when it has features no one uses, promises
+              it does not keep, or sections of the codebase that no one maintains.
+              Wholeness is not the same as finished. It means that what exists
+              is right, and that what should exist does.
+            </p>
+          </div>
+        </article>
+
+        <article class="pillar">
+          <div class="pillar-mark" aria-hidden="true">II</div>
+          <div class="pillar-content">
+            <h3>Proportion</h3>
+            <p class="pillar-tagline"><em>Consonantia.</em> Right relation of parts to whole.</p>
+            <p class="pillar-body">
+              The parts are in right relation to each other and to what the
+              product is for. Complexity should match the problem it solves.
+              An interface with twelve options for a two-option decision fails
+              proportion. So does a distributed microservices architecture
+              for an application with three users. Good software is scaled
+              to its task.
+            </p>
+          </div>
+        </article>
+
+        <article class="pillar">
+          <div class="pillar-mark" aria-hidden="true">III</div>
+          <div class="pillar-content">
+            <h3>Clarity</h3>
+            <p class="pillar-tagline"><em>Claritas.</em> The thing communicates what it is.</p>
+            <p class="pillar-body">
+              The interface signals its purpose. The code says what it does.
+              The system behaves in ways that match what users expect of it.
+              Clarity is not simplicity. Complex things can be clear. It is
+              the quality of being legible: to users, to other developers, to
+              the organization that maintains it long after the team that
+              built it has moved on.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Vitruvian Triad ───────────────────────────────────────────────── -->
+  <section class="vitruvian-section">
+    <div class="vitruvian-inner">
+
+      <div class="vitruvian-header">
+        <span class="eyebrow">Vitruvian Triad</span>
+        <h2>Firmitas. Utilitas. Venustas.</h2>
+        <p class="cert-intro">
+          The Roman architect Vitruvius, writing in the first century BC,
+          described the standard for good building in three words. No structure
+          that fails any one of them can be redeemed by the other two.
+          The same holds for software.
+        </p>
+      </div>
+
+      <figure class="vitruvian-figure">
+        <svg
+          class="vitruvian-svg"
+          viewBox="0 0 500 270"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-labelledby="vit-title vit-desc"
+        >
+          <title id="vit-title">Vitruvian Triad</title>
+          <desc id="vit-desc">
+            Equilateral triangle. Venustas (Beauty) at the top vertex.
+            Firmitas (Durability) at the bottom-left vertex. Utilitas (Usefulness)
+            at the bottom-right vertex. The letter K marks the centroid,
+            representing the K Score as the synthesis of all three qualities.
+          </desc>
+
+          <!-- Triangle -->
+          <polygon
+            points="250,62 334,208 166,208"
+            fill="none"
+            stroke="#e0dbd5"
+            stroke-width="1.5"
+            stroke-linejoin="round"
+          />
+
+          <!-- Centroid — K Score at the intersection of all three -->
+          <circle cx="250" cy="159" r="22" fill="none" stroke="#e0dbd5" stroke-width="1"/>
+          <text
+            x="250" y="167"
+            text-anchor="middle"
+            font-family="'EB Garamond', Georgia, serif"
+            font-size="20"
+            font-style="italic"
+            fill="#971b2f"
+          >K</text>
+
+          <!-- Vertex dots -->
+          <circle cx="250" cy="62"  r="3.5" fill="#971b2f"/>
+          <circle cx="334" cy="208" r="3.5" fill="#971b2f"/>
+          <circle cx="166" cy="208" r="3.5" fill="#971b2f"/>
+
+          <!-- Top: Venustas / Beauty -->
+          <text x="250" y="30"
+            text-anchor="middle"
+            font-family="'Inter', sans-serif"
+            font-size="9" font-weight="600" letter-spacing="0.12em"
+            fill="#999">BEAUTY</text>
+          <text x="250" y="48"
+            text-anchor="middle"
+            font-family="'EB Garamond', Georgia, serif"
+            font-size="15" font-style="italic"
+            fill="#2a2a2a">Venustas</text>
+
+          <!-- Bottom-right: Utilitas / Usefulness -->
+          <text x="349" y="204"
+            text-anchor="start"
+            font-family="'EB Garamond', Georgia, serif"
+            font-size="15" font-style="italic"
+            fill="#2a2a2a">Utilitas</text>
+          <text x="349" y="220"
+            text-anchor="start"
+            font-family="'Inter', sans-serif"
+            font-size="9" font-weight="600" letter-spacing="0.12em"
+            fill="#999">USEFULNESS</text>
+
+          <!-- Bottom-left: Firmitas / Durability -->
+          <text x="151" y="204"
+            text-anchor="end"
+            font-family="'EB Garamond', Georgia, serif"
+            font-size="15" font-style="italic"
+            fill="#2a2a2a">Firmitas</text>
+          <text x="151" y="220"
+            text-anchor="end"
+            font-family="'Inter', sans-serif"
+            font-size="9" font-weight="600" letter-spacing="0.12em"
+            fill="#999">DURABILITY</text>
+        </svg>
+
+        <figcaption>
+          Vitruvius, <cite>De Architectura</cite>, c.&thinsp;25&nbsp;BC.
+          Three principles for good building — applied here as the standard for good software.
+        </figcaption>
+      </figure>
+
+      <div class="vitruvian-grid">
+        <article class="vitruvian-card">
+          <h3>Firmitas</h3>
+          <p class="vitruvian-sub">Durability</p>
+          <p>
+            It holds up. Under load, over time, through changes in requirements
+            and changes in team. Durability is not the same as rigidity. It means
+            the thing was built to last, and that the decisions made during
+            construction reflect that intention.
+          </p>
+        </article>
+        <article class="vitruvian-card">
+          <h3>Utilitas</h3>
+          <p class="vitruvian-sub">Usefulness</p>
+          <p>
+            It does what it is for. Not what someone imagined users would want,
+            but what the people who actually use it need from it. Usefulness is
+            evaluated from the outside, by whether the product serves its purpose
+            in practice, not whether it satisfies requirements in a specification.
+          </p>
+        </article>
+        <article class="vitruvian-card">
+          <h3>Venustas</h3>
+          <p class="vitruvian-sub">Beauty</p>
+          <p>
+            It delights. The experience is right. This is not ornament applied
+            at the end of the process. It is the quality of something that has
+            been thought through from beginning to end. When something is
+            genuinely beautiful, you can feel that every decision was made deliberately.
+          </p>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Certification Tracks ──────────────────────────────────────────── -->
+  <section class="services">
+    <div class="services-inner">
+      <div class="services-header">
+        <span class="eyebrow">Certification Tracks</span>
+        <h2>For software. For engineers.</h2>
+      </div>
+      <div class="cert-tracks-grid">
+
+        <article class="service-card">
+          <span class="eyebrow">01</span>
+          <h3>Software Certification</h3>
+          <p>
+            A product, system, or codebase evaluated against the K Score standard.
+            Applicable at any stage: before launch to identify what needs work,
+            after launch to document the standard achieved, or ongoing as part
+            of quality maintenance. The output is a score, a full evaluation
+            report, and the right to display the K certification mark.
+          </p>
+        </article>
+
+        <article class="service-card">
+          <span class="eyebrow">02</span>
+          <h3>Engineer Certification</h3>
+          <p>
+            An individual practitioner evaluated on how they work, not just what
+            they have shipped. This covers engineering ethics, decision-making
+            under pressure, how tradeoffs are handled, and the quality of the
+            systems they have built. A certified engineer has demonstrated that
+            their craft holds to the standard the K Score represents.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────────────────────────────── -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <span class="eyebrow">Get Started</span>
+      <h2>Begin the certification process.</h2>
+      <p class="cta-studio">
+        Certification produces a K Score from 0 to 100. Above the threshold,
+        you earn the right to display the K certification mark. Below it, you
+        receive a detailed report on what falls short and what closing those
+        gaps requires. It starts with a conversation.
+      </p>
+      <a href="mailto:frontdoor@kecker.co" class="cta-email">frontdoor@kecker.co →</a>
+    </div>
+  </section>
+
+</SiteShell>
+
+<style>
+  /* ── Classical properties: upright Latin term inside italic tagline ── */
+  .pillar-tagline em {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+
+  /* ── Intro paragraph shared by criteria + vitruvian sections ───────── */
+  .cert-intro {
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 1.4vw, 1.125rem);
+    line-height: 1.82;
+    color: var(--color-muted);
+    max-width: 52rem;
+    margin: 1rem 0 0;
+  }
+
+  /* ── Vitruvian section ──────────────────────────────────────────────── */
+  .vitruvian-section {
+    padding: 6rem 1.5rem 5.5rem;
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .vitruvian-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .vitruvian-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .vitruvian-header .eyebrow {
+    margin-bottom: 0.875rem;
+  }
+
+  /* SVG diagram */
+  .vitruvian-figure {
+    margin: 0 auto 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .vitruvian-svg {
+    width: 100%;
+    max-width: 440px;
+    height: auto;
+  }
+
+  .vitruvian-figure figcaption {
+    font-family: var(--font-ui);
+    font-size: 0.8125rem;
+    color: var(--color-faint);
+    text-align: center;
+  }
+
+  .vitruvian-figure cite {
+    font-style: italic;
+  }
+
+  /* Three-column triad grid */
+  .vitruvian-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--color-rule);
+    border-left: 1px solid var(--color-rule);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .vitruvian-card {
+    padding: 2.25rem 2rem;
+    border-right: 1px solid var(--color-rule);
+    border-bottom: 1px solid var(--color-rule);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .vitruvian-card h3 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--color-ink);
+    margin-bottom: 0.35rem;
+  }
+
+  .vitruvian-sub {
+    font-family: var(--font-ui);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin: 0 0 1.25rem;
+  }
+
+  .vitruvian-card p:last-child {
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 1.3vw, 1.1rem);
+    line-height: 1.8;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  /* ── Two-column certification tracks ────────────────────────────────── */
+  .cert-tracks-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--color-rule);
+    border-left: 1px solid var(--color-rule);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  /* ── Responsive ─────────────────────────────────────────────────────── */
+  @media (max-width: 60rem) {
+    .vitruvian-grid,
+    .cert-tracks-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 42rem) {
+    .vitruvian-section {
+      padding: 4rem 1rem 3.5rem;
+    }
+  }
+</style>

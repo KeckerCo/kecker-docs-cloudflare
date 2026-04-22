@@ -7,15 +7,6 @@ import { NAV_LINKS, SITE_TITLE } from '../consts';
 <header>
   <nav class="nav-shell">
     <a class="brand" href="/" aria-label={SITE_TITLE}>
-      <!--
-        Inline SVG mark — inherits currentColor from .brand-name CSS,
-        so it stays in sync with the text color automatically.
-      -->
-      <svg class="brand-mark" viewBox="0 0 40 44" fill="currentColor" aria-hidden="true" focusable="false">
-        <rect x="3" y="3" width="5" height="38"/>
-        <polygon points="8,14 8,17 33,3 27,3"/>
-        <polygon points="8,18.5 8,21.5 27,41 33,41"/>
-      </svg>
       <span class="brand-name">Kecker</span>
     </a>
 
@@ -106,18 +97,9 @@ import { NAV_LINKS, SITE_TITLE } from '../consts';
   .brand {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
     text-decoration: none;
     flex-shrink: 0;
     color: var(--color-ink);
-  }
-
-  .brand-mark {
-    width: 18px;
-    height: auto;
-    flex-shrink: 0;
-    /* Slightly optical-corrected vertical alignment */
-    margin-top: -1px;
   }
 
   .brand-name {
