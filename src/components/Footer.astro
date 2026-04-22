@@ -4,7 +4,10 @@ const today = new Date();
 
 <footer>
   <div class="footer-inner">
-    <p class="footer-copy">&copy; {today.getFullYear()} Kecker</p>
+    <div class="footer-left">
+      <p class="footer-copy">&copy; {today.getFullYear()} Kecker</p>
+      <a href="/privacy" class="footer-privacy">Privacy Policy</a>
+    </div>
     <div class="footer-social">
       <a href="https://github.com/KeckerCo" target="_blank" rel="noopener noreferrer" aria-label="Kecker on GitHub">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -36,12 +39,28 @@ const today = new Date();
     margin: 0 auto;
   }
 
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
   .footer-copy {
     margin: 0;
     font-family: 'Inter', system-ui, sans-serif;
     font-size: 0.8125rem;
     color: #999;
   }
+
+  .footer-privacy {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.8125rem;
+    color: #999;
+    text-decoration: none;
+    transition: color 0.12s;
+  }
+
+  .footer-privacy:hover { color: #971b2f; }
 
   .footer-social {
     display: flex;

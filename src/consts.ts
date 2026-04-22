@@ -3,5 +3,5 @@ export const SITE_DESCRIPTION = 'Software that serves human flourishing — buil
 export const SITE_TAGLINE = "Where Plato's ideals, Aristotle's logos, and Stoic virtue meet modern software craft.";
 export const NAV_LINKS = [
   { href: '/', label: 'Home' },
-  { href: '/privacy', label: 'Privacy' },
+  { href: 'mailto:frontdoor@kecker.co', label: 'Contact' },
 ];
