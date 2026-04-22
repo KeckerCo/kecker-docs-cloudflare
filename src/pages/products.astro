@@ -1,0 +1,530 @@
+---
+import SiteShell from '../layouts/SiteShell.astro';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  '@id': 'https://kecker.co/products/#list',
+  name: 'Kecker Products',
+  description: 'Software products built by Kecker for communities that care about their history and beliefs.',
+  numberOfItems: 1,
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      item: {
+        '@type': 'SoftwareApplication',
+        name: 'IRBS True Confessions',
+        operatingSystem: 'Android, iOS',
+        applicationCategory: 'LifestyleApplication',
+        description:
+          'A mobile reader for the 1689 London Baptist Confession and the Baptist Catechism, built for the Particular Baptist community. Dark mode, adjustable text, multilingual support, and seamless navigation through historical confessional documents.',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+        publisher: { '@id': 'https://kecker.co/#organization' },
+      },
+    },
+  ],
+};
+
+const screenshots = [
+  {
+    src: '/products/irbs-true-confessions/confession-toc-light.png',
+    alt: '1689 Confession table of contents — light mode',
+    caption: '1689 Confession',
+  },
+  {
+    src: '/products/irbs-true-confessions/catechism-toc-light.png',
+    alt: 'Baptist Catechism (Keach, 1693) table of contents',
+    caption: 'Baptist Catechism',
+  },
+  {
+    src: '/products/irbs-true-confessions/drawer-library-light.png',
+    alt: 'Library drawer showing the two confessional documents',
+    caption: 'Library',
+  },
+  {
+    src: '/products/irbs-true-confessions/text-selection-light.png',
+    alt: 'Text selection sheet with Search Puritan Works option',
+    caption: 'Search Puritan Works',
+  },
+  {
+    src: '/products/irbs-true-confessions/confession-toc-dark.png',
+    alt: '1689 Confession table of contents — dark mode',
+    caption: 'Dark Mode',
+  },
+];
+
+const features = [
+  {
+    icon: '📜',
+    title: '1689 Confession',
+    body: 'All 32 chapters of the Second London Baptist Confession of Faith, the foundational doctrinal standard for Reformed Baptist churches worldwide.',
+  },
+  {
+    icon: '❓',
+    title: 'Baptist Catechism',
+    body: "Keach's Catechism (1693) — 114 questions and answers covering Christian doctrine in the catechetical tradition.",
+  },
+  {
+    icon: '🔍',
+    title: 'Search Puritan Works',
+    body: 'Select any passage and immediately search the broader Puritan corpus for commentary, context, and historical theology.',
+  },
+  {
+    icon: '🌙',
+    title: 'Light & Dark Mode',
+    body: 'Full system-aware theming — read comfortably in any setting, at any hour.',
+  },
+  {
+    icon: '🌐',
+    title: 'Multilingual',
+    body: 'Telugu translation included. Additional languages are in progress to serve diaspora communities around the world.',
+  },
+  {
+    icon: '📐',
+    title: 'Built on Architekt',
+    body: "Powered by Kecker's own Kotlin Multiplatform architecture library — deterministic state, composable reducers, and testable by design.",
+  },
+];
+---
+
+<SiteShell
+  title="Products"
+  description="IRBS True Confessions — a mobile app bringing the 1689 London Baptist Confession and Baptist Catechism to the Particular Baptist community on Android and iOS."
+  {schema}
+>
+
+<!-- ── Hero ─────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Products</span>
+    <h1>Software built<br>for real communities.</h1>
+    <p class="lede">
+      We build tools that earn their place in people's lives.
+      Each product starts with a specific community, a clear need,
+      and a commitment to getting it right.
+    </p>
+  </div>
+</section>
+
+<!-- ── App Identity ──────────────────────────────────────────────────── -->
+<section class="page-section app-identity">
+  <div class="section-inner">
+    <div class="app-header">
+      <div class="app-title-block">
+        <span class="eyebrow">IRBS Seminary</span>
+        <h2>True Confessions</h2>
+        <p class="app-subtitle">
+          The confessional library for the Particular Baptist tradition.
+        </p>
+        <div class="platform-badges">
+          <span class="badge">Android</span>
+          <span class="badge">iOS</span>
+          <span class="badge badge-free">Free</span>
+        </div>
+      </div>
+      <div class="app-bio">
+        <p>
+          Particular Baptists have always been a people of the Book — and of their confessions.
+          The 1689 London Baptist Confession of Faith and Keach's Baptist Catechism are the
+          primary documents through which generations of Reformed Baptist churches have
+          defined, defended, and handed down their faith.
+        </p>
+        <p>
+          True Confessions puts both documents in your pocket. Clean typography, fast navigation,
+          light and dark mode — everything in service of the text, nothing in front of it.
+        </p>
+        <p>
+          Built for pastors, seminary students, church members, and anyone who wants
+          to read these documents the way they were meant to be read: carefully, often, and together.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Screenshot Gallery ────────────────────────────────────────────── -->
+<section class="page-section screenshots-section">
+  <div class="section-inner">
+    <h3 class="gallery-heading">A closer look</h3>
+    <div class="screenshot-gallery" role="list">
+      {screenshots.map((s) => (
+        <figure class="phone-frame" role="listitem">
+          <div class="phone-screen">
+            <img src={s.src} alt={s.alt} loading="lazy" decoding="async" />
+          </div>
+          <figcaption>{s.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ── Community ─────────────────────────────────────────────────────── -->
+<section class="page-section community-section">
+  <div class="section-inner community-inner">
+    <div class="community-text">
+      <span class="eyebrow">The Community</span>
+      <h2>Who this is for</h2>
+      <p>
+        The Particular Baptist movement traces its confessional roots to 17th-century England,
+        where congregations of believers — baptized on profession of faith — codified their
+        theology in the 1689 Confession. Today, hundreds of Reformed Baptist churches
+        around the world still hold that confession as their doctrinal standard.
+      </p>
+      <p>
+        These communities take their documents seriously. They study them in small groups,
+        quote them in sermons, and use them to train new members and ordain pastors. They
+        need a tool that respects that seriousness — not a cluttered app with push
+        notifications and subscription upsells, but a clean, focused reader built around
+        the texts themselves.
+      </p>
+      <p>
+        True Confessions was built in partnership with
+        <strong>IRBS Seminary</strong> (Institute of Reformed Baptist Studies)
+        to serve exactly that community.
+      </p>
+    </div>
+    <aside class="community-stats">
+      <div class="stat-card">
+        <span class="stat-number">32</span>
+        <span class="stat-label">Chapters in the<br>1689 Confession</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">114</span>
+        <span class="stat-label">Catechism<br>questions</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">2</span>
+        <span class="stat-label">Platforms<br>Android &amp; iOS</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">337</span>
+        <span class="stat-label">Years of history<br>in your pocket</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ── Features ──────────────────────────────────────────────────────── -->
+<section class="page-section features-section">
+  <div class="section-inner">
+    <span class="eyebrow">What's inside</span>
+    <h2>Features</h2>
+    <div class="features-grid">
+      {features.map((f) => (
+        <div class="feature-card">
+          <span class="feature-icon" aria-hidden="true">{f.icon}</span>
+          <h3>{f.title}</h3>
+          <p>{f.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ───────────────────────────────────────────────────────────── -->
+<section class="cta-section">
+  <div class="section-inner">
+    <h2>Want something like this?</h2>
+    <p>
+      We partner with organizations that have a community, a body of knowledge,
+      and a real need for it to be more accessible. If that sounds like you, let's talk.
+    </p>
+    <a href="/contact/" class="button button-primary">Start a conversation</a>
+  </div>
+</section>
+
+</SiteShell>
+
+<style>
+/* App Identity */
+.app-identity {
+  padding: 5rem 1.5rem 4rem;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.app-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.app-title-block h2 {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  margin-bottom: 0.75rem;
+}
+
+.app-subtitle {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.platform-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-rule);
+  border-radius: 100px;
+  color: var(--color-muted);
+}
+
+.badge-free {
+  border-color: #2e7d32;
+  color: #2e7d32;
+}
+
+.app-bio {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.app-bio p {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.85;
+  color: var(--color-text);
+}
+
+/* Screenshots */
+.screenshots-section {
+  padding: 4rem 1.5rem 5rem;
+  background: var(--color-warm);
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.gallery-heading {
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  color: var(--color-muted);
+  font-weight: 400;
+  margin-bottom: 2.5rem;
+}
+
+.screenshot-gallery {
+  display: flex;
+  gap: 1.75rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-rule) transparent;
+}
+
+.phone-frame {
+  flex: 0 0 auto;
+  width: 220px;
+  scroll-snap-align: start;
+  margin: 0;
+}
+
+.phone-screen {
+  width: 220px;
+  height: 440px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--color-rule);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
+  display: flex;
+  align-items: flex-start;
+}
+
+.phone-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.phone-frame figcaption {
+  margin-top: 0.75rem;
+  text-align: center;
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  letter-spacing: 0.02em;
+}
+
+/* Community */
+.community-section {
+  padding: 5rem 1.5rem;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.community-inner {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.community-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.community-text h2 {
+  margin-bottom: 0;
+}
+
+.community-text p {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.85;
+  color: var(--color-text);
+}
+
+.community-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--color-rule);
+  border: 1px solid var(--color-rule);
+  border-radius: 8px;
+  overflow: hidden;
+  align-self: start;
+  position: sticky;
+  top: 6rem;
+}
+
+.stat-card {
+  background: var(--color-bg);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.stat-number {
+  font-family: var(--font-serif);
+  font-size: 2.75rem;
+  line-height: 1;
+  color: var(--color-accent);
+  letter-spacing: -0.03em;
+}
+
+.stat-label {
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  line-height: 1.4;
+}
+
+/* Features */
+.features-section {
+  padding: 5rem 1.5rem;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.features-section h2 {
+  margin-bottom: 3rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 2rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-rule);
+  border-radius: 8px;
+}
+
+.feature-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.feature-card h3 {
+  font-size: 1.125rem;
+}
+
+.feature-card p {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-muted);
+}
+
+/* CTA reuse */
+.cta-section {
+  padding: 5rem 1.5rem;
+  text-align: center;
+  background: var(--color-ink);
+  color: var(--color-white);
+}
+
+.cta-section h2 {
+  color: var(--color-white);
+  margin-bottom: 1rem;
+}
+
+.cta-section p {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.8;
+  color: #ccc;
+  max-width: 44rem;
+  margin: 0 auto 2.5rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .app-header {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .community-inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .community-stats {
+    position: static;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .phone-frame {
+    width: 180px;
+  }
+
+  .phone-screen {
+    width: 180px;
+    height: 360px;
+  }
+}
+</style>
