@@ -1,6 +1,13 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "kecker",
+  "name": "kecker-docs",
   "compatibility_date": "2026-04-20",
-  "pages_build_output_dir": "./dist"
+  "pages_build_output_dir": "./dist",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "kecker-contact",
+      "database_id": "8c8bba83-0166-4463-9277-15d03dbc14f2"
+    }
+  ]
 }
