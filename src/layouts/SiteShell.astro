@@ -4,13 +4,13 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_TITLE } from '../consts';
 
-interface Props { title: string; description: string; schema?: Record<string, unknown>; }
-const { title, description, schema } = Astro.props;
+interface Props { title: string; description: string; ogType?: string; schema?: Record<string, unknown>; }
+const { title, description, ogType, schema } = Astro.props;
 const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | ${SITE_TITLE}`;
 ---
 <!doctype html>
 <html lang="en">
-  <head><BaseHead title={pageTitle} description={description} schema={schema} /></head>
+  <head><BaseHead title={pageTitle} description={description} ogType={ogType} schema={schema} /></head>
   <body>
     <Header />
     <main id="main-content"><slot /></main>

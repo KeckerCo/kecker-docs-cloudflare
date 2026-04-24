@@ -117,6 +117,13 @@ main {
   max-width: var(--prose-width);
 }
 
+.byline {
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  margin-top: 0.5rem;
+}
+
 /* ==========================================================================
    Navigation utilities
    ========================================================================== */

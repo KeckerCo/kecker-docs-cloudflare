@@ -31,26 +31,36 @@ const screenshots = [
     src: '/products/irbs-true-confessions/confession-toc-light.png',
     alt: '1689 Confession table of contents — light mode',
     caption: '1689 Confession',
+    width: 945,
+    height: 1943,
   },
   {
     src: '/products/irbs-true-confessions/catechism-toc-light.png',
     alt: 'Baptist Catechism (Keach, 1693) table of contents',
     caption: 'Baptist Catechism',
+    width: 945,
+    height: 1943,
   },
   {
     src: '/products/irbs-true-confessions/drawer-library-light.png',
     alt: 'Library drawer showing the two confessional documents',
     caption: 'Library',
+    width: 840,
+    height: 1680,
   },
   {
     src: '/products/irbs-true-confessions/text-selection-light.png',
     alt: 'Text selection sheet with Search Puritan Works option',
     caption: 'Search Puritan Works',
+    width: 945,
+    height: 840,
   },
   {
     src: '/products/irbs-true-confessions/confession-toc-dark.png',
     alt: '1689 Confession table of contents — dark mode',
     caption: 'Dark Mode',
+    width: 945,
+    height: 1943,
   },
 ];
 
@@ -151,7 +161,7 @@ const features = [
       {screenshots.map((s) => (
         <figure class="phone-frame" role="listitem">
           <div class="phone-screen">
-            <img src={s.src} alt={s.alt} loading="lazy" decoding="async" />
+            <img src={s.src} alt={s.alt} width={s.width} height={s.height} loading="lazy" decoding="async" />
           </div>
           <figcaption>{s.caption}</figcaption>
         </figure>

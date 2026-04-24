@@ -6,12 +6,13 @@ interface Props {
   title: string;
   description: string;
   image?: string;
+  ogType?: string;
   schema?: Record<string, unknown>;
 }
 
 const siteUrl = 'https://kecker.co';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const { title, description, image = '/og-image.svg', schema } = Astro.props;
+const { title, description, image = '/og-image.svg', ogType = 'website', schema } = Astro.props;
 
 const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
 
@@ -59,7 +60,7 @@ const orgSchema = {
 <meta name="description" content={description} />
 
 <!-- Open Graph -->
-<meta property="og:type"        content="website" />
+<meta property="og:type"        content={ogType} />
 <meta property="og:locale"      content="en_US" />
 <meta property="og:site_name"   content={SITE_TITLE} />
 <meta property="og:url"         content={canonicalURL} />
