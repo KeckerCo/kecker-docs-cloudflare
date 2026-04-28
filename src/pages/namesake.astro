@@ -1,0 +1,519 @@
+---
+import SiteShell from '../layouts/SiteShell.astro';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': 'https://kecker.co/namesake/#keckermann',
+  name: 'Bartholomäus Keckermann',
+  alternateName: 'Barthalomeow Keckermann',
+  birthDate: '1572',
+  deathDate: '1609',
+  birthPlace: { '@type': 'Place', name: 'Danzig (Gdańsk)' },
+  jobTitle: 'Professor of Philosophy',
+  worksFor: { '@type': 'EducationalOrganization', name: 'Gymnasium Academicum, Danzig' },
+  description:
+    'German Reformed philosopher, logician, and encyclopedist. One of the foremost systematists of his era, whose method of organising all branches of learning into coherent, interrelated systems shaped the intellectual inheritance of Reformed scholasticism.',
+  sameAs: 'https://en.wikipedia.org/wiki/Bartholomaeus_Keckermann',
+  mentions: { '@id': 'https://kecker.co/#organization' },
+};
+---
+
+<SiteShell
+  title="The Namesake"
+  description="Bartholomäus Keckermann (1572–1609) — the German philosopher and systematist whose method of organising knowledge into coherent systems gave Kecker its name."
+  {schema}
+>
+
+  <!-- ── Hero ──────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">The Namesake</span>
+      <h1>Bartholomäus<br />Keckermann.</h1>
+      <p class="lede">
+        Philosopher, logician, encyclopedist. A professor in Danzig at the turn
+        of the seventeenth century who believed that all genuine knowledge forms
+        a coherent whole — and that the purpose of systematic inquiry is not
+        to accumulate facts, but to understand how things properly fit together.
+      </p>
+      <div class="hero-actions">
+        <a href="#legacy" class="text-link">His legacy ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Portrait & Biography ──────────────────────────────────────── -->
+  <section class="page-section biography-section">
+    <div class="section-inner biography-inner">
+
+      <aside class="portrait-aside">
+        <figure class="portrait-figure">
+          <img
+            src="/keckermann-portrait.svg"
+            alt="Stylised engraving-style portrait of Bartholomäus Keckermann, scholar of Danzig, in dark academic robes with a white ruff collar"
+            width="360"
+            height="460"
+            loading="eager"
+            decoding="async"
+            class="portrait-img"
+          />
+          <figcaption>
+            <em>Barthalomeow Keckermann</em> · Danzig, 1572–1609<br />
+            <span class="portrait-caption-sub">
+              Professor of Philosophy, Gymnasium Academicum
+            </span>
+          </figcaption>
+        </figure>
+      </aside>
+
+      <div class="biography-text">
+        <span class="eyebrow">1572 – 1609</span>
+        <h2>The man who systematised everything.</h2>
+
+        <p>
+          Bartholomäus Keckermann was born in Danzig — the great mercantile port
+          on the Baltic, a city of competing languages, faiths, and ideas — in 1572.
+          He studied philosophy and theology at Wittenberg, Leipzig, and Basel,
+          absorbing the best of late-Renaissance learning before returning home to
+          take the chair of philosophy at the city's Gymnasium Academicum.
+        </p>
+        <p>
+          He held that post until his death in 1609, at the age of thirty-six or
+          thirty-seven. In less than two decades of active scholarship, he produced
+          a body of work that covered logic, rhetoric, physics, ethics, politics,
+          metaphysics, and theology — not as separate disciplines loosely bundled
+          together, but as a unified encyclopedia of knowledge, each part defined
+          by its relation to every other.
+        </p>
+        <p>
+          He was a Ramist — a follower of Pierre de la Ramée's method of
+          organising argument by dichotomous division — and a Reformed (Calvinist)
+          theologian who believed that rigorous method and living faith were not
+          in tension. His most influential works, the <em>Systema Logicae</em>
+          (1600) and the <em>Systema Ethicae</em> (1607), gave the next generation
+          of Protestant scholars a structured language for thinking carefully about
+          almost everything.
+        </p>
+        <p>
+          He died young. But the systematic habit of mind he embodied — the
+          conviction that good reasoning is not an ornament but a foundation —
+          outlived him by centuries.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Intellectual Legacy ───────────────────────────────────────── -->
+  <section class="pillars" id="legacy">
+    <div class="pillars-inner">
+      <div class="pillars-header">
+        <span class="eyebrow">Intellectual Legacy</span>
+        <h2>Three contributions that endure.</h2>
+      </div>
+      <div class="pillars-list">
+
+        <article class="pillar">
+          <div class="pillar-mark" aria-hidden="true">I</div>
+          <div class="pillar-content">
+            <h3>The Science of System</h3>
+            <p class="pillar-tagline">
+              <em>Systema:</em> not a catalogue, but a living structure of knowledge.
+            </p>
+            <p class="pillar-body">
+              Keckermann was among the first thinkers to ask a question that sounds
+              obvious but is genuinely hard: what makes a field of knowledge a field?
+              Not just a collection of facts or arguments, but an ordered whole with
+              a clear purpose, clear principles, and clear relations between its parts?
+              He called that structure a <em>systema</em>. His answer was that every
+              genuine discipline has a unifying aim and a method that follows from it —
+              and that the aim always traces back, in some way, to human good.
+              That is still the right question to ask before you build anything complex.
+            </p>
+          </div>
+        </article>
+
+        <article class="pillar">
+          <div class="pillar-mark" aria-hidden="true">II</div>
+          <div class="pillar-content">
+            <h3>Logic as Practical Craft</h3>
+            <p class="pillar-tagline">
+              Method is not the enemy of clarity — it is what makes clarity possible.
+            </p>
+            <p class="pillar-body">
+              Where some of his contemporaries treated logic as a school exercise
+              detached from practical life, Keckermann insisted on its practical
+              character. Good reasoning is not an end in itself. It is the means by
+              which you move correctly from what you know to what you should do.
+              His <em>Systema Logicae</em> was designed to be used — to be worked
+              through and applied, not merely admired. The same instinct runs through
+              everything Kecker builds: a tool that does not actually help someone
+              reason better, act better, or make better things is not a good tool,
+              however sophisticated its internals.
+            </p>
+          </div>
+        </article>
+
+        <article class="pillar">
+          <div class="pillar-mark" aria-hidden="true">III</div>
+          <div class="pillar-content">
+            <h3>Ethics as Architecture</h3>
+            <p class="pillar-tagline">
+              The good life is not an accident. It is something you design toward.
+            </p>
+            <p class="pillar-body">
+              Keckermann's ethics was not a list of rules. It was an account of what
+              a well-ordered human life looks like — and of how the structures around
+              us, from households to cities to the organisation of labour, either
+              support or undermine that life. The <em>Systema Ethicae</em> treated
+              ethics and politics as a single problem, because they are: you cannot
+              build good institutions out of bad principles any more than you can
+              build good software out of bad architecture. The standard he was
+              working toward — genuine human flourishing, not mere compliance — is
+              the same standard Kecker applies to every product it certifies and
+              every system it builds.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Pull-quote ─────────────────────────────────────────────────── -->
+  <section class="flourishing">
+    <div class="flourishing-inner">
+      <span class="eyebrow">On Method</span>
+      <blockquote class="pull-quote">
+        A system is not a summary. It is the form a discipline takes when
+        its parts are in right relation to its purpose.
+      </blockquote>
+      <div class="flourishing-body">
+        <p>
+          This was Keckermann's governing idea: that genuine knowledge is not
+          a pile of information but a structure — and that the test of a structure
+          is whether its parts are rightly ordered to the end the whole is for.
+          He applied this to logic. He applied it to ethics. He applied it to
+          politics and theology and natural philosophy. In each case, the question
+          was the same: what is this discipline actually for, and does it actually
+          serve that purpose?
+        </p>
+        <p>
+          It is the same question we think software engineers should ask before
+          they write the first line of code. What is this system actually for?
+          Who does it actually serve? And does the structure of what we are
+          building reflect an honest answer to both?
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Why the Name ───────────────────────────────────────────────── -->
+  <section class="name-section page-section">
+    <div class="section-inner name-inner">
+
+      <div class="name-header">
+        <span class="eyebrow">Why Kecker</span>
+        <h2>The name carries an argument.</h2>
+      </div>
+
+      <div class="name-body">
+        <p>
+          Kecker takes its name from Keckermann not as a tribute to a historical
+          curiosity, but as a statement of method. He spent his career insisting
+          that the goal of intellectual work is not accumulation or display, but
+          right order — bringing what you know into proper alignment with what
+          you are actually trying to do and who you are actually trying to serve.
+        </p>
+        <p>
+          That is exactly what distinguishes software worth building from software
+          that merely exists. Not whether it is technically impressive, but whether
+          it is organised around something real — a genuine human need, met in a
+          way that respects the people involved. Keckermann's word for that
+          organising principle was <em>systema</em>. We call it good engineering.
+          It is the same discipline.
+        </p>
+        <p>
+          He also serves as a reminder that the tradition Kecker draws on — Plato,
+          Aristotle, the Stoics, Vitruvius — did not stop at the ancient world.
+          It ran continuously through the medieval and early modern periods,
+          through figures like Keckermann who synthesised classical philosophy
+          with Reformed theology and with the emerging systematic sciences.
+          The line from Aristotle's ethics to Keckermann's
+          <em>systema</em> to the question of whether a software product genuinely
+          serves the people who use it is direct and unbroken. We are working
+          in that tradition, not merely citing it.
+        </p>
+      </div>
+
+      <div class="name-works">
+        <span class="eyebrow">Selected Works</span>
+        <ul class="works-list">
+          <li>
+            <span class="work-title">Systema Logicae</span>
+            <span class="work-year">1600</span>
+            <span class="work-desc">
+              A comprehensive system of logic from first principles — intended
+              for practical use, not scholastic display.
+            </span>
+          </li>
+          <li>
+            <span class="work-title">Systema Rhetoricae</span>
+            <span class="work-year">1600</span>
+            <span class="work-desc">
+              Rhetoric treated as a systematic discipline, grounded in the
+              relation between speaker, argument, and audience.
+            </span>
+          </li>
+          <li>
+            <span class="work-title">Systema Ethicae</span>
+            <span class="work-year">1607</span>
+            <span class="work-desc">
+              Ethics as architecture: an account of the well-ordered life and
+              the institutional structures that support or undermine it.
+            </span>
+          </li>
+          <li>
+            <span class="work-title">Systema S.S. Theologiae</span>
+            <span class="work-year">1602</span>
+            <span class="work-desc">
+              Reformed theology organised as a coherent system, applying the
+              same structural discipline to doctrinal questions.
+            </span>
+          </li>
+          <li>
+            <span class="work-title">Operum Omnium</span>
+            <span class="work-year">1614 (posthumous)</span>
+            <span class="work-desc">
+              Collected works, assembled and published after his death — a
+              testament to the scope and rigour of his encyclopedic project.
+            </span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────────────────────────── -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <span class="eyebrow">The Work Continues</span>
+      <h2>Same questions. New medium.</h2>
+      <p class="cta-studio">
+        Keckermann asked what right order looked like in knowledge.
+        We ask what right order looks like in software.
+        If you are building something worth getting right, that is a
+        conversation we want to have.
+      </p>
+      <a href="/contact/" class="button button-primary">Start a conversation</a>
+    </div>
+  </section>
+
+</SiteShell>
+
+<style>
+/* ── Biography section ───────────────────────────────────────────── */
+.biography-section {
+  padding: 5rem 1.5rem 5rem;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.biography-inner {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+/* ── Portrait ────────────────────────────────────────────────────── */
+.portrait-aside {
+  position: sticky;
+  top: 6rem;
+}
+
+.portrait-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.portrait-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.12),
+    0 1px 6px rgba(0, 0, 0, 0.08);
+}
+
+.portrait-figure figcaption {
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  line-height: 1.55;
+}
+
+.portrait-caption-sub {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--color-faint);
+  letter-spacing: 0.02em;
+}
+
+/* ── Biography text ──────────────────────────────────────────────── */
+.biography-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.biography-text h2 {
+  margin-bottom: 0.5rem;
+}
+
+.biography-text p {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: 1.9;
+  color: var(--color-text);
+}
+
+.biography-text em {
+  font-style: italic;
+}
+
+/* ── Name section ────────────────────────────────────────────────── */
+.name-section {
+  padding: 5.5rem 1.5rem 6rem;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.name-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+}
+
+.name-header {
+  max-width: 44rem;
+}
+
+.name-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  max-width: var(--prose-width);
+}
+
+.name-body p {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: 1.9;
+  color: var(--color-text);
+}
+
+.name-body em {
+  font-style: italic;
+}
+
+/* ── Works list ──────────────────────────────────────────────────── */
+.name-works {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.name-works .eyebrow {
+  margin-bottom: 0;
+}
+
+.works-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--color-rule);
+  display: flex;
+  flex-direction: column;
+}
+
+.works-list li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 0.15rem 1.5rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--color-rule);
+  align-items: baseline;
+}
+
+.work-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  color: var(--color-ink);
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.work-year {
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  grid-column: 2;
+  grid-row: 1;
+  white-space: nowrap;
+}
+
+.work-desc {
+  font-family: var(--font-serif);
+  font-size: clamp(0.9375rem, 1.3vw, 1.0625rem);
+  color: var(--color-muted);
+  line-height: 1.7;
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .biography-inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .portrait-aside {
+    position: static;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 600px) {
+  .biography-section,
+  .name-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .portrait-aside {
+    max-width: 240px;
+  }
+
+  .works-list li {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .work-year {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .work-desc {
+    grid-row: 3;
+  }
+}
+</style>
